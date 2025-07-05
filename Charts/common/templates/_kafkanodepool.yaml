@@ -1,0 +1,26 @@
+{{- define "common.kafkanodepool.tpl" -}}
+{{- $top := first . }}
+{{- $kafkanodepool := index . 1 }}
+apiVersion: kafka.strimzi.io/v1beta2
+kind: KafkaNodePool
+metadata:
+  {{- include "common.metadata" (list $top true) | nindent 2 }}
+spec:
+  replicas: {{ $kafkanodepool.replicas | default 2 }}
+  roles:
+    - controller
+    - broker
+  storage:
+    type: jbod
+    volumes:
+      - id: 0
+        type: persistent-claim
+        size: {{ default "10Gi" ($kafkanodepool.storageSize | quote) }}
+        deleteClaim: false
+        kraftMetadata: shared
+{{- end }}
+
+{{- define "common.kafkanodepool" -}}
+{{- $autoscaling := index . 1 }}
+  {{- include "common.utils.merge" (append . "common.kafkanodepool.tpl") }}
+{{- end }}

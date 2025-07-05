@@ -1,5 +1,2 @@
 replicas: 2
-tolerations:
-- key: plane
-  operator: Equal
-  value: management
+watchAnyNamespace: true

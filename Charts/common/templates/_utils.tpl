@@ -89,7 +89,7 @@ For more information about Kubernetes Workload Resources check: https://kubernet
 {{- $top := first . -}}
 {{- $isWorkloadResource := index . 1 | default false -}}
 {{- $object := last . -}}
-name: {{ default $object.role $object.name }}
+name: {{ $object.name }}
 labels:
   {{- include "common.labels" (list $top $isWorkloadResource $object) | nindent 2 }}
 {{- end }}
