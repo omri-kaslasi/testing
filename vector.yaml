@@ -1,0 +1,23 @@
+sources:
+  udp_syslog:
+    type: socket
+    address: "0.0.0.0:514"
+    mode: udp
+    decoding:
+      codec: syslog
+      syslog:
+        lossy: true
+
+sinks:
+  s3_sink:
+    type: aws_s3
+    inputs:
+      - udp_syslog
+    bucket: "my-syslog-bucket"
+    region: "us-east-1"
+    compression: gzip
+    key_prefix: "syslog/date=%F/"
+    encoding:
+      codec: json
+    storage_class: GLACIER_IR
+

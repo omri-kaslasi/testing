@@ -1,0 +1,24 @@
+{{- define "common.persistentVolumeClaim.tpl" -}}
+{{- $top := first . }}
+{{- $pvc := index . 1 }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  {{- include "common.metadata" (list $top false $pvc) | nindent 2 }}
+spec:
+  accessModes:
+    {{- toYaml (default (list "ReadWriteMany") $pvc.accessModes) | nindent 4 }}
+  resources:
+    requests:
+      storage:
+      {{- if eq $pvc.csiDriver "efs.csi.aws.com" }}
+        1Gi  # Placeholder when using EFS
+      {{- else }}
+        {{ $pvc.storageCapacity }}
+      {{- end }}
+  storageClassName: {{ $pvc.name }}
+{{- end }}
+
+{{- define "common.persistentVolumeClaim" -}}
+{{- include "common.utils.merge" (append . "common.persistentVolumeClaim.tpl") }}
+{{- end }}

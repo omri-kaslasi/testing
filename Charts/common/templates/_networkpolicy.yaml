@@ -1,0 +1,49 @@
+{{- define "common.networkPolicy.tpl" -}}
+{{- $top := first . }}
+{{- $networkPolicy := index . 1 }}
+{{- if and (not (hasKey $networkPolicy "ingress")) (not (hasKey $networkPolicy "egress")) (ne $networkPolicy.type "defaultDeny") (ne $networkPolicy.type "tenantDefaultDeny") }}
+{{- fail "networkPolicy value must have at least one of ingress or egress keys" }}
+{{- end }}
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  {{- include "common.metadata" (list $top false $networkPolicy) | nindent 2 }}
+  {{- with $networkPolicy.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  {{- if or (eq $networkPolicy.type "tenantDefaultDeny") (eq $networkPolicy.type "tenantDefaultEgress") }}
+  podSelector: {}
+  {{- else }}
+  podSelector:
+    matchLabels:
+    {{- include "common.selectorLabels" (list $top $networkPolicy) | nindent 6 }}
+  {{- end }}
+  policyTypes:
+    {{- if or (hasKey $networkPolicy "ingress") (eq $networkPolicy.type "defaultDeny") (eq $networkPolicy.type "tenantDefaultDeny") }}
+    - Ingress
+    {{- end }}
+    {{- if or (hasKey $networkPolicy "egress") (eq $networkPolicy.type "defaultDeny") (eq $networkPolicy.type "tenantDefaultDeny") }}
+    - Egress
+    {{- end }}
+  {{- if hasKey $networkPolicy "ingress" }}
+  ingress:
+    {{- if typeIs "string" $networkPolicy.ingress }}
+    {{- tpl $networkPolicy.ingress $top | nindent 4 }}
+    {{- else }}
+    {{- toYaml $networkPolicy.ingress | nindent 4}}
+    {{- end }}
+  {{- end }}
+  {{- if hasKey $networkPolicy "egress" }}
+  egress:
+    {{- if typeIs "string" $networkPolicy.egress }}
+    {{- tpl $networkPolicy.egress $top | nindent 4 }}
+    {{- else }}
+    {{- toYaml $networkPolicy.egress | nindent 4}}
+    {{- end }}
+  {{- end }}
+{{- end }}
+{{- define "common.networkPolicy" -}}
+{{- include "common.utils.merge" (append . "common.networkPolicy.tpl") }}
+{{- end }}

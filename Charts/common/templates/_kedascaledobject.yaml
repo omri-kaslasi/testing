@@ -1,0 +1,96 @@
+{{- define "kedaresourcetrigger.tpl" -}}
+  {{- $resource := index . 0 }}
+  {{- $type := index . 1 }}
+  {{- $value := index . 2 }}
+- type: {{ $resource }}
+  metadata:
+    type: {{ $type }}
+    value: {{ $value | quote }}
+{{- end -}}
+
+{{- define "common.kedascaledobject.tpl" -}}
+{{- $top := first . }}
+{{- $autoscaling := index . 1 }}
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  {{- include "common.metadata" (list $top false $autoscaling) | nindent 2 }}
+spec:
+{{- if $autoscaling }}
+  scaleTargetRef:
+  {{- if and (hasKey $autoscaling "scaleTargetRef") (hasKey $autoscaling.scaleTargetRef "name") }}
+    name: {{ tpl $autoscaling.scaleTargetRef.name $top }}
+  {{- else }}
+    name: {{ include "common.name" $top }}
+  {{- end }}
+  {{- if and (hasKey $autoscaling "scaleTargetRef") (hasKey $autoscaling.scaleTargetRef "kind") }}
+    kind: {{ $autoscaling.scaleTargetRef.kind }}
+  {{- end }}
+{{- end }}
+  minReplicaCount: {{ $autoscaling.minReplicas | default 0 }}
+  maxReplicaCount: {{ $autoscaling.maxReplicas }}
+  pollingInterval: {{ $autoscaling.pollingInterval | default 30 }}
+  cooldownPeriod: {{ $autoscaling.cooldownPeriod }}
+{{- if and $autoscaling (hasKey $autoscaling "advanced") }}
+  advanced:
+    horizontalPodAutoscalerConfig:
+      behavior:
+        {{- if hasKey $autoscaling.advanced "scaleDown" }}
+        scaleDown:
+          {{- if hasKey $autoscaling.advanced.scaleDown "stabilizationWindowSeconds" }}
+          stabilizationWindowSeconds: {{ $autoscaling.advanced.scaleDown.stabilizationWindowSeconds }}
+          {{- end }}
+          {{- if hasKey $autoscaling.advanced.scaleDown "policies" }}
+          policies:
+          {{- range $autoscaling.advanced.scaleDown.policies }}
+          - type: {{ .type }}
+            value: {{ .value }}
+            periodSeconds: {{ default 15 .periodSeconds }}
+          {{- end }}
+          {{- end }}
+        {{- end }}
+        {{- if hasKey $autoscaling.advanced "scaleUp" }}
+        scaleUp:
+          {{- if hasKey $autoscaling.advanced.scaleUp "stabilizationWindowSeconds" }}
+          stabilizationWindowSeconds: {{ $autoscaling.advanced.scaleUp.stabilizationWindowSeconds }}
+          {{- end }}
+          {{- if hasKey $autoscaling.advanced.scaleUp "policies" }}
+          policies:
+          {{- range $autoscaling.advanced.scaleUp.policies }}
+          - type: {{ .type }}
+            value: {{ .value }}
+            periodSeconds: {{ default 15 .periodSeconds }}
+          {{- end }}
+          {{- end }}
+        {{- end }}
+{{- end }}
+  triggers:
+  {{- if $autoscaling.triggers.kafkaTriggers }}
+    {{- range $autoscaling.triggers.kafkaTriggers }}
+    - type: kafka
+      metadata:
+        bootstrapServers: {{ tpl .bootstrapServers $top }}
+        consumerGroup: {{ tpl .consumerGroup $top }}
+        lagThreshold: {{ .lagThreshold | quote }}
+        activationLagThreshold: {{ .activationLagThreshold | quote }}
+    {{- end }}
+  {{- end }}
+  {{- with $autoscaling.triggers.memoryUtilizationPercentage -}}
+    {{- include "kedaresourcetrigger.tpl" (list "memory" "Utilization" . ) | nindent 4 }}
+  {{- end -}}
+  {{- with $autoscaling.triggers.memoryAverageValue -}}
+    {{- include "kedaresourcetrigger.tpl" (list "memory" "AverageValue" . ) | nindent 4 }}
+  {{- end -}}
+  {{- with $autoscaling.triggers.cpuUtilizationPercentage -}}
+    {{- include "kedaresourcetrigger.tpl" (list "cpu" "Utilization" . ) | nindent 4 }}
+  {{- end -}}
+  {{- with $autoscaling.triggers.cpuAverageValue -}}
+    {{- include "kedaresourcetrigger.tpl" (list "cpu" "AverageValue" . ) | nindent 4 }}
+  {{- end -}}
+{{- end }}
+{{- define "common.kedascaledobject" -}}
+  {{- $autoscaling := index . 1 }}
+  {{- if $autoscaling.enabled  }}
+    {{- include "common.utils.merge" (append . "common.kedascaledobject.tpl") }}
+  {{- end }}
+{{- end }}

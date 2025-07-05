@@ -1,0 +1,73 @@
+global:
+  region: us-east-1
+  env: dev
+  tenant: dev01
+  vectorEfsID: "fs-029ce9b520f183983"
+  vectorIamRole: "arn:aws:iam::010526270844:role/us-east-1-vector"
+  vectorS3Backup: arn:aws:s3:::dev1-vector-sink-backup
+
+sourceAlphaVector:
+  environmentVariables:
+    VECTOR_CONFIG: /vector/source1.yaml
+
+  role: &role alpha-vector
+
+  resources:
+    limits:
+      memory: 2048Mi
+    requests:
+      cpu: 1000m
+      memory: 2048Mi
+
+  autoscaling:
+    enabled: true
+    minReplicas: 1
+    maxReplicas: 3
+    cooldownPeriod: 30
+    triggers:
+      cpuUtilizationPercentage: 60
+
+  # image:
+  #   repository: timberio/vector
+  #   version: 0.47.0-debian
+  
+  # This block is for when you want to start the pod without image to debug efs
+  command: 
+    - "sleep"
+    - "600"
+  image:
+    repository: busybox
+    version: 1.37.0
+
+  persistentVolume:
+    name: "vector-efs"
+    csiDriver: efs.csi.aws.com
+    volumeHandle: "{{ .Values.global.vectorEfsID }}" 
+    reclaimPolicy: Retain
+    volumes:
+      - name: vector
+        mounts:
+          - subPath: front_end_vector.yaml # Also remember to pass it as env variable!
+            mountPath: /vector/
+
+  serviceAccount:
+    create: true
+    name: vector
+    iamRole: "{{ .Values.global.vectorIamRole }}" 
+
+  nodeSelector:
+    karpenter.sh/nodepool: node-mixed
+
+  podAnnotations:
+    iam.amazonaws.com/role: vector
+
+  networkPolicy:
+    name: *role
+    egress: |
+      - to:
+        - namespaceSelector:
+            matchLabels:
+              name: "kube-system"
+        ports:
+          - protocol: TCP
+            port: 53 # DNS Resolver

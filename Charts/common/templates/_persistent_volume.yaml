@@ -1,0 +1,32 @@
+{{- define "common.persistentVolume.tpl" -}}
+{{- $top := first . }}
+{{- $pv := index . 1 }}
+{{- $volumeHandle := tpl $pv.volumeHandle $top }}
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  {{- include "common.metadata" (list $top false $pv) | nindent 2 }}
+spec:
+  accessModes:
+    {{- toYaml (default (list "ReadWriteMany") $pv.accessModes) | nindent 4 }}
+  capacity:
+  {{- if eq $pv.csiDriver "efs.csi.aws.com" }}
+    storage: 2Gi # Placeholder when using EFS
+  {{- else }}
+     storage: {{ $pv.storageCapacity }}
+  {{- end }}
+  csi:
+    driver: {{ required "csi driver value is required!" $pv.csiDriver }}
+    volumeHandle: {{ required "csi volumeHandle value is required!" $volumeHandle }}
+  {{- with $pv.enableSyncMountOptions }}
+  mountOptions:
+  - sync
+  {{- end}}
+  persistentVolumeReclaimPolicy: {{  $pv.reclaimPolicy }}
+  storageClassName: {{ $pv.name }}
+  volumeMode: Filesystem
+{{- end }}
+
+{{- define "common.persistentVolume" -}}
+{{- include "common.utils.merge" (append . "common.persistentVolume.tpl") }}
+{{- end }}

@@ -1,0 +1,16 @@
+{{- define "common.storageClass.tpl" -}}
+{{- $top := first . }}
+{{- $sc := index . 1 }}
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  {{- include "common.metadata" (list $top false $sc) | nindent 2 }}
+provisioner: {{ $sc.csiDriver }}
+{{- if and $sc (hasKey $sc "storageClassReclaimPolicy") }}
+reclaimPolicy: {{ $sc.storageClassReclaimPolicy }}
+{{- end }}
+{{- end }}
+
+{{- define "common.storageClass" -}}
+{{- include "common.utils.merge" (append . "common.storageClass.tpl") }}
+{{- end }}

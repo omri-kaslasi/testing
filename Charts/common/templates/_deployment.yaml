@@ -1,0 +1,27 @@
+{{- define "common.deployment.tpl" -}}
+{{- $top := first . }}
+{{- $deployment := index . 1 }}
+{{- $autoscaling := $deployment.autoscaling }}
+{{- $serviceAccount := $deployment.serviceAccount }}
+{{- $secrets := $deployment.containerSecrets }}
+{{- $configurationFiles := $deployment.configurationFiles -}}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  {{- include "common.metadata" (list $top true $deployment ) | nindent 2 }}
+spec:
+  {{- if not $autoscaling.enabled }}
+  replicas: {{ if (hasKey $deployment "replicaCount") }}{{ $deployment.replicaCount | int }}{{ else }}1{{ end }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "common.selectorLabels" (list $top $deployment)| nindent 6 }}
+  spec:
+    restartPolicy: Always
+  template:
+    {{- include "common.pod.template" (list $top $deployment $serviceAccount) | indent 4 }}
+{{- end }}
+
+{{- define "common.deployment" -}}
+{{- include "common.utils.merge" (append . "common.deployment.tpl") }}
+{{- end }}

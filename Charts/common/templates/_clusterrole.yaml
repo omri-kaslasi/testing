@@ -1,0 +1,25 @@
+{{- define "common.clusterRole.tpl" -}}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ .name }}
+rules:
+{{- range .rules }}
+  - apiGroups: 
+{{- range .apiGroups }}
+    - {{ . }}
+{{- end }}
+    resources:
+{{- range .resources }}
+    - {{ . }}
+{{- end }}
+    verbs:
+{{- range .verbs }}
+    - {{ . }}
+{{- end }}
+{{- end }}
+{{- end }}
+
+{{- define "common.clusterRole" -}}
+{{- include "common.clusterRole.tpl" . }}
+{{- end }}

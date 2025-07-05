@@ -1,0 +1,145 @@
+{{/*
+The common.ingress template accepts a list of values:
+
+- $top, the top context
+- $ingress, a dictionary of values used in the ingress template.
+  Example valid ingress dicionary:
+  ```
+  ingress:
+    enabled: true
+    annotations:
+      annotkey: annotvalue
+    sourceIpRules:
+      enabled: true
+      path: /api/*
+      ips:
+        - 1.1.1.1/32
+    redirectRule: # optional
+      enabled: true
+      redirectConfig:
+        destinationPath: "/advanced_search_docs/"
+        host: "cdn.velocityapp.co"
+      paths:
+        - /advanced_search_docs/*
+        - /advanced_search_docs
+
+    tls:
+      - hosts: |
+          - {{ include "common.values.mainAlbPublicDnsName" . }}
+  ```
+ - $service, a dictionary of values used in the service template. A detailed explanation can be found in the service template.
+[optional] the template name of the overrides
+*/}}
+{{- define "common.ingress.metadata" -}}
+{{- $top := first . }}
+{{- $ingress := index . 1 }}
+{{- $service := index . 2 }}
+{{- $sourceIps := required "The value `global.ingress.sourceIps` is required and must be a list" $top.Values.global.ingress.sourceIps }}
+{{- $vpcCidr := required "The value `global.vpcCidr` is required" $top.Values.global.vpcCidr }}
+{{- $sourceIps = append $sourceIps $vpcCidr }}
+{{- $enableWaf := required "The value `global.ingress.enableWaf` is required and must be a bool" $top.Values.global.ingress.enableWaf }}
+{{- $enableLogs := required "The value `global.ingress.enableLogs` is required and must be a bool" $top.Values.global.ingress.enableLogs }}
+{{- $enableRedirectRule := and (hasKey $ingress "redirectRule") $ingress.redirectRule.enabled }}
+{{- $enableRedirectRuleAnnotations := and ($enableRedirectRule) (hasKey $ingress.redirectRule "useAnnotations") ($ingress.redirectRule.useAnnotations) }}
+{{- with $ingress.annotations }}
+metadata:
+  annotations:
+    {{- include "common.utils.tplYaml" (list . $top) | nindent 4 -}}
+  {{- if $ingress.sourceIpRules.enabled }}
+  {{- include "common.source-ips-annotations" (list $sourceIps $service) | nindent 4 }}
+  {{- end }}
+  {{- if $enableWaf }}
+    alb.ingress.kubernetes.io/wafv2-acl-arn: {{ required "The value `global.ingress.wafArn` is required and must be a bool" $top.Values.global.ingress.wafArn }}
+  {{- end }}
+  {{- if $enableLogs }}
+    alb.ingress.kubernetes.io/load-balancer-attributes: access_logs.s3.enabled=true,access_logs.s3.bucket={{ $top.Values.global.ingress.logsBucketName }},access_logs.s3.prefix={{ printf "%s/%s" $top.Values.global.accountId $top.Values.global.region }}
+    {{- end }}
+  {{- if and $enableRedirectRule $enableRedirectRuleAnnotations }}
+  {{- include "common.redirect-rules-annotations" $ingress.redirectRule.redirectConfig | nindent 4 }}
+  {{- end }}
+{{- end }}
+{{- end }}
+
+{{- define "common.ingress.tpl" -}}
+{{- $top := first . }}
+{{- $ingress := index . 1 }}
+{{- $enableRedirectRule := and (hasKey $ingress "redirectRule") $ingress.redirectRule.enabled }}
+{{- $enableRedirectRuleAnnotations := and ($enableRedirectRule) (hasKey $ingress.redirectRule "useAnnotations") ($ingress.redirectRule.useAnnotations) }}
+{{- $service := index . 2 }}
+{{- $fullName := include "common.name" $top }}
+{{- $sourceIps := $top.Values.global.ingress.sourceIps }}
+{{- $svcPorts := $service.ports }}
+{{- if semverCompare ">=1.14-0" $top.Capabilities.KubeVersion.GitVersion }}
+apiVersion: networking.k8s.io/v1
+{{- else }}
+apiVersion: extensions/v1beta1
+{{- end }}
+kind: Ingress
+metadata:
+  {{- include "common.metadata" (list $top false $ingress) | nindent 2 }}
+spec:
+{{- if $ingress.tls }}
+  tls:
+  {{- range $ingress.tls }}
+  - hosts:
+    {{- if typeIs "string" .hosts }}
+    {{- tpl .hosts $top | nindent 4 }}
+    {{- else }}
+    {{- toYaml .hosts | nindent 4 }}
+    {{- end }}
+    {{- if .secretName }}
+    secretName: {{ .secretName }}
+    {{- end }}
+  {{- end }}
+{{- end }}
+  rules:
+  - http:
+      paths:
+      {{- with $ingress.hosts }}
+        {{- range $path := .paths }}
+          {{- range $svcPort := $svcPorts }}
+      - path: {{ $path }}
+        backend:
+          serviceName: {{ $fullName }}
+          servicePort: {{ $svcPort.port }}
+          {{- end }}
+        {{- end }}
+      {{- end -}}
+  {{- if $enableRedirectRule }}
+      {{- range $path := $ingress.redirectRule.paths }}
+      - path: {{ $path }}
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: {{ $ingress.redirectRule.redirectConfig.serviceName | default "redirect-rule" }}
+            port:
+            {{- if $enableRedirectRuleAnnotations }}
+              name: use-annotation
+            {{- else }}
+              number: {{ $ingress.redirectRule.redirectConfig.port }}
+            {{- end }}
+      {{- end }}
+  {{- end }}
+  {{- if $ingress.sourceIpRules.enabled }}
+  {{- $path := $ingress.sourceIpRules.path }}
+    {{- range until (include "rule-count" (list (len $sourceIps) (len $svcPorts))|int) }}
+      - path: {{ $path }}
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: rule-ip{{.}}
+            port:
+              name: use-annotation
+    {{- end }}
+  {{- end }}
+{{- end -}}
+
+{{- define "common.ingress" -}}
+{{- $top := first . }}
+{{- $ingress := index . 1 }}
+{{- $service := index . 2 }}
+{{- range $i := $ingress }}
+---
+  {{- include "common.utils.merge" (list $top $i $service "common.ingress.metadata" "common.ingress.tpl") }}
+{{- end }}
+{{- end }}

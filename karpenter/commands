@@ -1,0 +1,9 @@
+# Logout of helm registry to perform an unauthenticated pull against the public ECR
+helm registry logout public.ecr.aws
+
+helm upgrade --install karpenter oci://public.ecr.aws/karpenter/karpenter --version 1.4.0 --namespace karpenter -f values.yaml
+
+eksctl utils associate-iam-oidc-provider \
+  --region us-east-1 \
+  --cluster us-east-1-eks \
+  --approve
