@@ -5,7 +5,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  {{- include "common.metadata" (list $top false $pv) | nindent 2 }}
+  {{- include "common.metadata" (list $top $pv) | nindent 2 }}
 spec:
   accessModes:
     {{- toYaml (default (list "ReadWriteMany") $pv.accessModes) | nindent 4 }}

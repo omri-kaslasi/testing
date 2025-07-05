@@ -4,7 +4,7 @@
 apiVersion: kafka.strimzi.io/v1beta2
 kind: KafkaNodePool
 metadata:
-  {{- include "common.metadata" (list $top true) | nindent 2 }}
+  {{- include "common.metadata" (list $top $kafkanodepool) | nindent 2 }}
 spec:
   replicas: {{ $kafkanodepool.replicas | default 2 }}
   roles:

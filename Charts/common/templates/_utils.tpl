@@ -51,7 +51,6 @@ If the type of $input is not a string, it uses the toYaml function to convert th
 
 {{- define "common.labels" -}}
 {{- $top := first . -}}
-{{- $isWorkloadResource := index . 1 | default false -}}
 {{- $object := last . -}}
 region: {{ required ".Values.global.region is required!" $top.Values.global.region }}
 env: {{ required ".Values.global.env is required!" $top.Values.global.env }}
@@ -87,11 +86,10 @@ For more information about Kubernetes Workload Resources check: https://kubernet
 */}}
 {{- define "common.metadata.tpl" -}}
 {{- $top := first . -}}
-{{- $isWorkloadResource := index . 1 | default false -}}
 {{- $object := last . -}}
-name: {{ $object.name }}
+name: {{ $object.name | quote }}
 labels:
-  {{- include "common.labels" (list $top $isWorkloadResource $object) | nindent 2 }}
+  {{- include "common.labels" (list $top $object) | nindent 2 }}
 {{- end }}
 
 {{/*
