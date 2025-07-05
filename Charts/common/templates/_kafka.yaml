@@ -1,0 +1,37 @@
+{{- define "common.kafka.tpl" -}}
+{{- $top := first . }}
+{{- $kafka := index . 1 }}
+apiVersion: kafka.strimzi.io/v1beta2
+kind: Kafka
+metadata:
+  {{- include "common.metadata" (list $top $kafka) | nindent 2 }}
+  annotations:
+    strimzi.io/node-pools: enabled
+    strimzi.io/kraft: enabled
+spec:
+  kafka:
+    version: 4.0.0
+    metadataVersion: 3.9-IV0
+    listeners:
+      - name: plain
+        port: 9092
+        type: internal
+        tls: false
+      - name: tls
+        port: 9093
+        type: internal
+        tls: true
+    config:
+      offsets.topic.replication.factor: {{ $kafka.replicas | default 2 }}
+      transaction.state.log.replication.factor: {{ $kafka.replicas | default 2 }}
+      transaction.state.log.min.isr: {{ sub (default 2 $kafka.replicas | int) 1 }}
+      default.replication.factor: {{ $kafka.replicas | default 2 }}
+      min.insync.replicas: {{ sub (default 2 $kafka.replicas | int) 1 }}
+  entityOperator:
+    topicOperator: {}
+    userOperator: {}
+{{- end }}
+
+{{- define "common.kafka" -}}
+  {{- include "common.utils.merge" (append . "common.kafka.tpl") }}
+{{- end }}

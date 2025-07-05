@@ -5,6 +5,7 @@ apiVersion: kafka.strimzi.io/v1beta2
 kind: KafkaNodePool
 metadata:
   {{- include "common.metadata" (list $top $kafkanodepool) | nindent 2 }}
+    strimzi.io/cluster: {{ $kafkanodepool.name }}
 spec:
   replicas: {{ $kafkanodepool.replicas | default 2 }}
   roles:
@@ -21,6 +22,5 @@ spec:
 {{- end }}
 
 {{- define "common.kafkanodepool" -}}
-{{- $autoscaling := index . 1 }}
   {{- include "common.utils.merge" (append . "common.kafkanodepool.tpl") }}
 {{- end }}

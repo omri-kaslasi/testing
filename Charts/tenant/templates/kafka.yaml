@@ -1,1 +1,3 @@
+{{- include "common.kafka" (list . .Values.tenant.kafka) }}
+---
 {{- include "common.kafkanodepool" (list . .Values.tenant.kafka) }}
