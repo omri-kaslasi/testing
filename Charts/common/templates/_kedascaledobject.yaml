@@ -14,7 +14,7 @@
 apiVersion: keda.sh/v1alpha1
 kind: ScaledObject
 metadata:
-  {{- include "common.metadata" (list $top false $autoscaling) | nindent 2 }}
+  {{- include "common.metadata" (list $top $autoscaling) | nindent 2 }}
 spec:
 {{- if $autoscaling }}
   scaleTargetRef:
