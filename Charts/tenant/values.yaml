@@ -9,5 +9,5 @@ global:
 
 tenant:
   kafka:
-    name: dev01
+    name: kafka
     storageSize: 10

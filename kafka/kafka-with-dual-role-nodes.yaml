@@ -2,7 +2,7 @@ apiVersion: kafka.strimzi.io/v1beta2
 kind: KafkaNodePool
 metadata:
   name: dev01-kafka-nodepool
-  namespace: dev01
+  namespace: kafka
   labels:
     strimzi.io/cluster: dev01
 spec:
@@ -22,7 +22,7 @@ spec:
 apiVersion: kafka.strimzi.io/v1beta2
 kind: Kafka
 metadata:
-  name: dev01
+  name: kafka
   namespace: dev01
   annotations:
     strimzi.io/node-pools: enabled

@@ -12,13 +12,11 @@ spec:
     - controller
     - broker
   storage:
-    type: jbod
-    volumes:
-      - id: 0
-        type: persistent-claim
-        size: {{ default "10Gi" ($kafkanodepool.storageSize | quote) }}
-        deleteClaim: false
-        kraftMetadata: shared
+    type: persistent-claim
+    size: {{ default "10Gi" ($kafkanodepool.storageSize | quote) }}
+    class: gp3
+    deleteClaim: false
+    kraftMetadata: shared
 {{- end }}
 
 {{- define "common.kafkanodepool" -}}
