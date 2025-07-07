@@ -5,6 +5,7 @@ global:
   vectorEfsID: "fs-029ce9b520f183983"
   vectorIamRole: "arn:aws:iam::010526270844:role/us-east-1-vector"
   vectorS3Backup: arn:aws:s3:::dev1-vector-sink-backup
+  kafkaClusterName: kafka
 
 sourceAlphaVector:
   environmentVariables:
@@ -74,6 +75,6 @@ sourceAlphaVector:
   
   kafka:
     inputQueue:
-      name: gammaVectorInputTopic
+      name: sourceAlphaInputTopic
     outputQueue:
-      name: gammaVectorOutputTopic
+      name: sourceAlphaOutputTopic

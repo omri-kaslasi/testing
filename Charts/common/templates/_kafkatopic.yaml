@@ -1,10 +1,11 @@
 {{- define "common.kafkatopic.tpl" -}}
 {{- $top := first . }}
-{{- $kafkatopic := index . 1 }}apiVersion: kafka.strimzi.io/v1beta2
+{{- $kafkatopic := index . 1 }}
+apiVersion: kafka.strimzi.io/v1beta2
 kind: KafkaTopic
 metadata:
   {{- include "common.metadata" (list $top $kafkatopic) | nindent 2 }}
-    strimzi.io/cluster: {{ $kafkatopic.name }}
+    strimzi.io/cluster: {{ $top.Values.global.kafkaClusterName }}
 spec:
   partitions: {{ $kafkatopic.partitions | default "5" }}
   replicas: {{ $kafkatopic.replicas | default "1" }}

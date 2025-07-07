@@ -1,3 +1,3 @@
-{{- include "common.kafkatopic" (list . .Values.sourceAlphaVector.inputQueue) }}
+{{- include "common.kafkatopic" (list . .Values.sourceAlphaVector.kafka.inputQueue) }}
 ---
-{{- include "common.kafkatopic" (list . .Values.sourceAlphaVector.outputQueue) }}
+{{- include "common.kafkatopic" (list . .Values.sourceAlphaVector.kafka.outputQueue) }}
