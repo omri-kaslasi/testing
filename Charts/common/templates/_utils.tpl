@@ -87,7 +87,11 @@ For more information about Kubernetes Workload Resources check: https://kubernet
 {{- define "common.metadata.tpl" -}}
 {{- $top := first . -}}
 {{- $object := last . -}}
-name: {{ $object.name | quote }}
+{{- if $object.name -}}
+name: {{ quote $object.name }}
+{{- else }}
+name: {{ quote $object.role }}
+{{- end }}
 labels:
   {{- include "common.labels" (list $top $object) | nindent 2 }}
 {{- end }}

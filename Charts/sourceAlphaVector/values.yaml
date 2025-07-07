@@ -8,9 +8,6 @@ global:
   kafkaClusterName: kafka
 
 sourceAlphaVector:
-  environmentVariables:
-    VECTOR_CONFIG: /vector/source1.yaml
-
   role: &role alpha-vector
 
   resources:
@@ -75,6 +72,9 @@ sourceAlphaVector:
   
   kafka:
     inputQueue:
-      name: sourceAlphaInputTopic
+      name: source-alpha-input-topic
     outputQueue:
-      name: sourceAlphaOutputTopic
+      name: source-alpha-output-topic
+
+  environmentVariables:
+    VECTOR_CONFIG: /vector/source1.yaml
