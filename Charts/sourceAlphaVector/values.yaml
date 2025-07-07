@@ -71,3 +71,9 @@ sourceAlphaVector:
         ports:
           - protocol: TCP
             port: 53 # DNS Resolver
+  
+  kafka:
+    inputQueue:
+      name: gammaVectorInputTopic
+    outputQueue:
+      name: gammaVectorOutputTopic

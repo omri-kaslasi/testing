@@ -1,0 +1,18 @@
+{{- define "common.kafkatopic.tpl" -}}
+{{- $top := first . }}
+{{- $kafkatopic := index . 1 }}apiVersion: kafka.strimzi.io/v1beta2
+kind: KafkaTopic
+metadata:
+  {{- include "common.metadata" (list $top $kafkatopic) | nindent 2 }}
+    strimzi.io/cluster: {{ $kafkatopic.name }}
+spec:
+  partitions: {{ $kafkatopic.partitions | default "5" }}
+  replicas: {{ $kafkatopic.replicas | default "1" }}
+  config:
+    retention.ms: {{ $kafkatopic.retention | default "172800000" }} # two days
+    segment.bytes: {{ $kafkatopic.segment_bytes | default "1073741824" }} # 1 GiB
+{{- end }}
+
+{{- define "common.kafkatopic" -}}
+  {{- include "common.utils.merge" (append . "common.kafkatopic.tpl") }}
+{{- end }}
