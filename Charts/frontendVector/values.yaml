@@ -65,3 +65,20 @@ sourceAlphaVector:
           - protocol: TCP
             port: 53 # DNS Resolver
 
+  # TODO:- implement container port listeners list
+  service:
+    type: LoadBalancer
+    externalTrafficPolicy: Local
+    annotations: |-
+      service.beta.kubernetes.io/aws-load-balancer-backend-protocol: tcp
+      service.beta.kubernetes.io/aws-load-balancer-cross-zone-load-balancing-enabled: "true"
+      service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: "ip"
+      service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
+      service.beta.kubernetes.io/aws-load-balancer-target-group-attributes: preserve_client_ip.enabled=true
+      service.beta.kubernetes.io/aws-load-balancer-type: "external"
+      service.beta.kubernetes.io/aws-load-balancer-healthcheck-port: "1514"
+    ports:
+    - port: 12
+    - port: 13
+    - port: 14
+    - port: 15
