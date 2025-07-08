@@ -1,0 +1,7 @@
+cmd2>=2.5          # interactive shell + argparse commands
+rich>=13.7         # keep for pretty tables (optional)
+pydantic>=2.7
+tomlkit>=0.12
+toml>=0.10
+jmespath>=1.0
+python-json-logger>=2.0

@@ -1,0 +1,8 @@
+{
+  "id": "win_app_remove_16394",
+  "name": "Remove Event 16394",
+  "description": "Drop verbose event id 16394",
+  "data_source": "win_evtx_app",
+  "vrl": "!(.Id == 16394)",
+  "relevancy_rule": "key_fields.Id.event_16394 > `0`"
+}

@@ -1,0 +1,22 @@
+{
+  "id": "win_evtx_app",
+  "name": "Windows EVTX Application",
+  "type": "windows_evtx",
+  "description": "Windows Event Log Application Source",
+  "parse_vrl": ". = parse_json!(string!(.message))",
+  "frontend_port": 12222,
+  "fields": [
+    "Id",
+    "Level",
+    "Channel",
+    "Message",
+    "Hostname",
+    "TimeCreated"
+  ],
+  "key_fields": {
+    "Id": {
+      "event_1000": 1221,
+      "event_16394": 54231
+    }
+  }
+}

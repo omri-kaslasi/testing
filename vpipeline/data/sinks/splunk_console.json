@@ -1,0 +1,27 @@
+{
+  "sources": {
+    "vector": {
+      "type": "vector",
+      "address": "0.0.0.0:9001"
+    }
+  },
+  "sinks": {
+    "splunk": {
+      "type": "splunk_hec_logs",
+      "inputs": ["vector"],
+      "endpoint": "http://192.168.194.1:8088",
+      "token": "841cf610-975c-4079-b31c-1808a6abd919",
+      "encoding": {
+        "codec": "json"
+      }
+    },
+    "console": {
+      "type": "console",
+      "inputs": ["vector"],
+      "target": "stdout",
+      "encoding": {
+        "codec": "json"
+      }
+    }
+  }
+}

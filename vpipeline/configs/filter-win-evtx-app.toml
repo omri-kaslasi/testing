@@ -1,0 +1,15 @@
+# Filter node for win-evtx-app
+
+[sources.in]
+type = "vector"
+address = "0.0.0.0:9000"
+
+[transforms.win_app_remove_16394]
+type = "remap"
+inputs = ["in"]
+source = "!(.Id == 16394)"
+
+[sinks.out]
+type = "vector"
+inputs = ["win_app_remove_16394"]
+address = "127.0.0.1:9001"

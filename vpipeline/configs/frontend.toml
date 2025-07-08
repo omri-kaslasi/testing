@@ -1,0 +1,12 @@
+# Generated 2025-07-04T14:45:47.257205
+
+[sources.win_evtx_app]
+type = "socket"
+mode = "tcp"
+address = "0.0.0.0:12222"
+encoding = "json"
+
+[sinks.to_win_evtx_app]
+type = "vector"
+address = "filter-win-evtx-app:9000"
+inputs = ["win_evtx_app"]

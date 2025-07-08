@@ -1,0 +1,214 @@
+{"asctime": "2025-07-04 16:43:59,383", "levelname": "INFO", "name": "__main__", "message": "Starting vpipeline..."}
+{"asctime": "2025-07-04 16:43:59,384", "levelname": "INFO", "name": "managers.pipeline_manager", "message": "Sync pipeline"}
+{"asctime": "2025-07-04 16:43:59,386", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config frontend.toml"}
+{"asctime": "2025-07-04 16:43:59,387", "levelname": "WARNING", "name": "managers.initiative_manager", "message": "key_fields.Id.16394, {'id': 'win_evtx_app', 'name': 'Windows EVTX Application', 'type': 'windows_evtx', 'fields': ['Id', 'Level', 'Channel', 'Message', 'Hostname', 'TimeCreated'], 'key_fields': {'Id': {'1000': 1221, '16394': 54231}}, 'stats_path': 'stats/win_evtx_app.parquet', 'filter_port': 12223}"}
+{"asctime": "2025-07-04 16:43:59,389", "levelname": "WARNING", "name": "managers.initiative_manager", "message": "Bad relevancy rule in win_app_remove_16394: Expecting: ['quoted_identifier', 'unquoted_identifier', 'lbracket', 'lbrace'], got: number: Parse error at column 14, token \"16394\" (NUMBER), for expression:\n\"key_fields.Id.16394\"\n               ^"}
+{"asctime": "2025-07-04 16:43:59,392", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config filter-win_evtx_app.toml"}
+{"asctime": "2025-07-04 16:43:59,394", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config sink.toml"}
+{"asctime": "2025-07-04 16:43:59,396", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Vector hot-reload requested (noop)"}
+{"asctime": "2025-07-04 16:45:05,427", "levelname": "INFO", "name": "__main__", "message": "Starting vpipeline..."}
+{"asctime": "2025-07-04 16:45:05,428", "levelname": "INFO", "name": "managers.pipeline_manager", "message": "Sync pipeline"}
+{"asctime": "2025-07-04 16:45:05,430", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config frontend.toml"}
+{"asctime": "2025-07-04 16:45:05,436", "levelname": "WARNING", "name": "managers.initiative_manager", "message": "key_fields.Id.a, {'id': 'win_evtx_app', 'name': 'Windows EVTX Application', 'type': 'windows_evtx', 'fields': ['Id', 'Level', 'Channel', 'Message', 'Hostname', 'TimeCreated'], 'key_fields': {'Id': {'1000': 1221, 'a': 54231}}, 'stats_path': 'stats/win_evtx_app.parquet', 'filter_port': 12223}"}
+{"asctime": "2025-07-04 16:45:05,438", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config filter-win_evtx_app.toml"}
+{"asctime": "2025-07-04 16:45:05,441", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config sink.toml"}
+{"asctime": "2025-07-04 16:45:05,441", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Vector hot-reload requested (noop)"}
+{"asctime": "2025-07-04 16:46:37,783", "levelname": "INFO", "name": "__main__", "message": "Starting vpipeline..."}
+{"asctime": "2025-07-04 16:46:37,784", "levelname": "INFO", "name": "managers.pipeline_manager", "message": "Sync pipeline"}
+{"asctime": "2025-07-04 16:46:37,786", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config frontend.toml"}
+{"asctime": "2025-07-04 16:46:37,786", "levelname": "WARNING", "name": "managers.initiative_manager", "message": "key_fields.Id[?event_16394 > 0], {'id': 'win_evtx_app', 'name': 'Windows EVTX Application', 'type': 'windows_evtx', 'fields': ['Id', 'Level', 'Channel', 'Message', 'Hostname', 'TimeCreated'], 'key_fields': {'Id': {'event_1000': 1221, 'event_16394': 54231}}, 'stats_path': 'stats/win_evtx_app.parquet', 'filter_port': 12223}"}
+{"asctime": "2025-07-04 16:46:37,786", "levelname": "WARNING", "name": "managers.initiative_manager", "message": "Bad relevancy rule in win_app_remove_16394: invalid token: Parse error at column 29, token \"0\" (NUMBER), for expression:\n\"key_fields.Id[?event_16394 > 0]\"\n                              ^"}
+{"asctime": "2025-07-04 16:46:37,787", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config filter-win_evtx_app.toml"}
+{"asctime": "2025-07-04 16:46:37,789", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config sink.toml"}
+{"asctime": "2025-07-04 16:46:37,790", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Vector hot-reload requested (noop)"}
+{"asctime": "2025-07-04 16:47:30,180", "levelname": "INFO", "name": "__main__", "message": "Starting vpipeline..."}
+{"asctime": "2025-07-04 16:47:30,182", "levelname": "INFO", "name": "managers.pipeline_manager", "message": "Sync pipeline"}
+{"asctime": "2025-07-04 16:47:30,183", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config frontend.toml"}
+{"asctime": "2025-07-04 16:47:30,184", "levelname": "WARNING", "name": "managers.initiative_manager", "message": "key_fields.Id[?event_16394 > '0'], {'id': 'win_evtx_app', 'name': 'Windows EVTX Application', 'type': 'windows_evtx', 'fields': ['Id', 'Level', 'Channel', 'Message', 'Hostname', 'TimeCreated'], 'key_fields': {'Id': {'event_1000': 1221, 'event_16394': 54231}}, 'stats_path': 'stats/win_evtx_app.parquet', 'filter_port': 12223}"}
+{"asctime": "2025-07-04 16:47:30,185", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config filter-win_evtx_app.toml"}
+{"asctime": "2025-07-04 16:47:30,187", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config sink.toml"}
+{"asctime": "2025-07-04 16:47:30,187", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Vector hot-reload requested (noop)"}
+{"asctime": "2025-07-04 16:47:49,675", "levelname": "WARNING", "name": "managers.initiative_manager", "message": "key_fields.Id[?event_16394 > '0'], {'id': 'win_evtx_app', 'name': 'Windows EVTX Application', 'type': 'windows_evtx', 'fields': ['Id', 'Level', 'Channel', 'Message', 'Hostname', 'TimeCreated'], 'key_fields': {'Id': {'event_1000': 1221, 'event_16394': 54231}}, 'stats_path': 'stats/win_evtx_app.parquet', 'filter_port': 12223}"}
+{"asctime": "2025-07-04 16:49:26,588", "levelname": "INFO", "name": "__main__", "message": "Starting vpipeline..."}
+{"asctime": "2025-07-04 16:49:26,589", "levelname": "INFO", "name": "managers.pipeline_manager", "message": "Sync pipeline"}
+{"asctime": "2025-07-04 16:49:26,591", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config frontend.toml"}
+{"asctime": "2025-07-04 16:49:26,592", "levelname": "WARNING", "name": "managers.initiative_manager", "message": "False"}
+{"asctime": "2025-07-04 16:49:26,593", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config filter-win_evtx_app.toml"}
+{"asctime": "2025-07-04 16:49:26,596", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config sink.toml"}
+{"asctime": "2025-07-04 16:49:26,596", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Vector hot-reload requested (noop)"}
+{"asctime": "2025-07-04 16:50:12,528", "levelname": "INFO", "name": "__main__", "message": "Starting vpipeline..."}
+{"asctime": "2025-07-04 16:50:12,529", "levelname": "INFO", "name": "managers.pipeline_manager", "message": "Sync pipeline"}
+{"asctime": "2025-07-04 16:50:12,530", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config frontend.toml"}
+{"asctime": "2025-07-04 16:50:12,530", "levelname": "WARNING", "name": "managers.initiative_manager", "message": "key_fields.Id[?event_16394 > '0'], {'id': 'win_evtx_app', 'name': 'Windows EVTX Application', 'type': 'windows_evtx', 'fields': ['Id', 'Level', 'Channel', 'Message', 'Hostname', 'TimeCreated'], 'key_fields': {'Id': {'event_1000': 1221, 'event_16394': 54231}}, 'stats_path': 'stats/win_evtx_app.parquet', 'filter_port': 12223}"}
+{"asctime": "2025-07-04 16:50:12,530", "levelname": "WARNING", "name": "managers.initiative_manager", "message": "False"}
+{"asctime": "2025-07-04 16:50:12,532", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config filter-win_evtx_app.toml"}
+{"asctime": "2025-07-04 16:50:12,533", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config sink.toml"}
+{"asctime": "2025-07-04 16:50:12,533", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Vector hot-reload requested (noop)"}
+{"asctime": "2025-07-04 16:51:17,209", "levelname": "INFO", "name": "__main__", "message": "Starting vpipeline..."}
+{"asctime": "2025-07-04 16:51:17,210", "levelname": "INFO", "name": "managers.pipeline_manager", "message": "Sync pipeline"}
+{"asctime": "2025-07-04 16:51:17,212", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config frontend.toml"}
+{"asctime": "2025-07-04 16:51:17,213", "levelname": "WARNING", "name": "managers.initiative_manager", "message": "key_fields.Id[?event_16394 > '0'], {'id': 'win_evtx_app', 'name': 'Windows EVTX Application', 'type': 'windows_evtx', 'fields': ['Id', 'Level', 'Channel', 'Message', 'Hostname', 'TimeCreated'], 'key_fields': {'Id': {'event_1000': 1221, 'event_16394': 54231}}, 'stats_path': 'stats/win_evtx_app.parquet', 'filter_port': 12223}"}
+{"asctime": "2025-07-04 16:51:17,213", "levelname": "WARNING", "name": "managers.initiative_manager", "message": "None"}
+{"asctime": "2025-07-04 16:51:17,215", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config filter-win_evtx_app.toml"}
+{"asctime": "2025-07-04 16:51:17,216", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config sink.toml"}
+{"asctime": "2025-07-04 16:51:17,217", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Vector hot-reload requested (noop)"}
+{"asctime": "2025-07-04 16:52:03,133", "levelname": "INFO", "name": "__main__", "message": "Starting vpipeline..."}
+{"asctime": "2025-07-04 16:52:03,134", "levelname": "INFO", "name": "managers.pipeline_manager", "message": "Sync pipeline"}
+{"asctime": "2025-07-04 16:52:03,135", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config frontend.toml"}
+{"asctime": "2025-07-04 16:52:03,136", "levelname": "WARNING", "name": "managers.initiative_manager", "message": "key_fields[Id][?event_16394 > '0'], {'id': 'win_evtx_app', 'name': 'Windows EVTX Application', 'type': 'windows_evtx', 'fields': ['Id', 'Level', 'Channel', 'Message', 'Hostname', 'TimeCreated'], 'key_fields': {'Id': {'event_1000': 1221, 'event_16394': 54231}}, 'stats_path': 'stats/win_evtx_app.parquet', 'filter_port': 12223}"}
+{"asctime": "2025-07-04 16:52:03,136", "levelname": "WARNING", "name": "managers.initiative_manager", "message": "Bad relevancy rule in win_app_remove_16394: Expecting: star, got: unquoted_identifier: Parse error at column 11, token \"Id\" (UNQUOTED_IDENTIFIER), for expression:\n\"key_fields[Id][?event_16394 > '0']\"\n            ^"}
+{"asctime": "2025-07-04 16:52:03,138", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config filter-win_evtx_app.toml"}
+{"asctime": "2025-07-04 16:52:03,140", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config sink.toml"}
+{"asctime": "2025-07-04 16:52:03,142", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Vector hot-reload requested (noop)"}
+{"asctime": "2025-07-04 16:55:47,588", "levelname": "INFO", "name": "__main__", "message": "Starting vpipeline..."}
+{"asctime": "2025-07-04 16:55:47,589", "levelname": "INFO", "name": "managers.pipeline_manager", "message": "Sync pipeline"}
+{"asctime": "2025-07-04 16:55:47,590", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config frontend.toml"}
+{"asctime": "2025-07-04 16:55:47,591", "levelname": "WARNING", "name": "managers.initiative_manager", "message": "key_fields.Id[*], {'id': 'win_evtx_app', 'name': 'Windows EVTX Application', 'type': 'windows_evtx', 'fields': ['Id', 'Level', 'Channel', 'Message', 'Hostname', 'TimeCreated'], 'key_fields': {'Id': {'event_1000': 1221, 'event_16394': 54231}}, 'stats_path': 'stats/win_evtx_app.parquet', 'filter_port': 12223}"}
+{"asctime": "2025-07-04 16:55:47,591", "levelname": "WARNING", "name": "managers.initiative_manager", "message": "None"}
+{"asctime": "2025-07-04 16:55:47,592", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config filter-win_evtx_app.toml"}
+{"asctime": "2025-07-04 16:55:47,593", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config sink.toml"}
+{"asctime": "2025-07-04 16:55:47,593", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Vector hot-reload requested (noop)"}
+{"asctime": "2025-07-04 16:57:00,066", "levelname": "INFO", "name": "__main__", "message": "Starting vpipeline..."}
+{"asctime": "2025-07-04 16:57:00,067", "levelname": "INFO", "name": "managers.pipeline_manager", "message": "Sync pipeline"}
+{"asctime": "2025-07-04 16:57:00,068", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config frontend.toml"}
+{"asctime": "2025-07-04 16:57:00,069", "levelname": "WARNING", "name": "managers.initiative_manager", "message": "key_fields, {'id': 'win_evtx_app', 'name': 'Windows EVTX Application', 'type': 'windows_evtx', 'fields': ['Id', 'Level', 'Channel', 'Message', 'Hostname', 'TimeCreated'], 'key_fields': {'Id': {'event_1000': 1221, 'event_16394': 54231}}, 'stats_path': 'stats/win_evtx_app.parquet', 'filter_port': 12223}"}
+{"asctime": "2025-07-04 16:57:00,069", "levelname": "WARNING", "name": "managers.initiative_manager", "message": "", "Id": {"event_1000": 1221, "event_16394": 54231}}
+{"asctime": "2025-07-04 16:57:00,071", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config filter-win_evtx_app.toml"}
+{"asctime": "2025-07-04 16:57:00,072", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config sink.toml"}
+{"asctime": "2025-07-04 16:57:00,072", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Vector hot-reload requested (noop)"}
+{"asctime": "2025-07-04 16:57:42,434", "levelname": "INFO", "name": "__main__", "message": "Starting vpipeline..."}
+{"asctime": "2025-07-04 16:57:42,435", "levelname": "INFO", "name": "managers.pipeline_manager", "message": "Sync pipeline"}
+{"asctime": "2025-07-04 16:57:42,436", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config frontend.toml"}
+{"asctime": "2025-07-04 16:57:42,437", "levelname": "WARNING", "name": "managers.initiative_manager", "message": "key_fields[*], {'id': 'win_evtx_app', 'name': 'Windows EVTX Application', 'type': 'windows_evtx', 'fields': ['Id', 'Level', 'Channel', 'Message', 'Hostname', 'TimeCreated'], 'key_fields': {'Id': {'event_1000': 1221, 'event_16394': 54231}}, 'stats_path': 'stats/win_evtx_app.parquet', 'filter_port': 12223}"}
+{"asctime": "2025-07-04 16:57:42,437", "levelname": "WARNING", "name": "managers.initiative_manager", "message": "None"}
+{"asctime": "2025-07-04 16:57:42,438", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config filter-win_evtx_app.toml"}
+{"asctime": "2025-07-04 16:57:42,439", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config sink.toml"}
+{"asctime": "2025-07-04 16:57:42,439", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Vector hot-reload requested (noop)"}
+{"asctime": "2025-07-04 16:57:57,947", "levelname": "INFO", "name": "__main__", "message": "Starting vpipeline..."}
+{"asctime": "2025-07-04 16:57:57,949", "levelname": "INFO", "name": "managers.pipeline_manager", "message": "Sync pipeline"}
+{"asctime": "2025-07-04 16:57:57,951", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config frontend.toml"}
+{"asctime": "2025-07-04 16:57:57,951", "levelname": "WARNING", "name": "managers.initiative_manager", "message": "key_fields.Id, {'id': 'win_evtx_app', 'name': 'Windows EVTX Application', 'type': 'windows_evtx', 'fields': ['Id', 'Level', 'Channel', 'Message', 'Hostname', 'TimeCreated'], 'key_fields': {'Id': {'event_1000': 1221, 'event_16394': 54231}}, 'stats_path': 'stats/win_evtx_app.parquet', 'filter_port': 12223}"}
+{"asctime": "2025-07-04 16:57:57,952", "levelname": "WARNING", "name": "managers.initiative_manager", "message": "", "event_1000": 1221, "event_16394": 54231}
+{"asctime": "2025-07-04 16:57:57,953", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config filter-win_evtx_app.toml"}
+{"asctime": "2025-07-04 16:57:57,955", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config sink.toml"}
+{"asctime": "2025-07-04 16:57:57,955", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Vector hot-reload requested (noop)"}
+{"asctime": "2025-07-04 16:58:21,169", "levelname": "INFO", "name": "__main__", "message": "Starting vpipeline..."}
+{"asctime": "2025-07-04 16:58:21,170", "levelname": "INFO", "name": "managers.pipeline_manager", "message": "Sync pipeline"}
+{"asctime": "2025-07-04 16:58:21,173", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config frontend.toml"}
+{"asctime": "2025-07-04 16:58:21,173", "levelname": "WARNING", "name": "managers.initiative_manager", "message": "key_fields.Id.event_16394, {'id': 'win_evtx_app', 'name': 'Windows EVTX Application', 'type': 'windows_evtx', 'fields': ['Id', 'Level', 'Channel', 'Message', 'Hostname', 'TimeCreated'], 'key_fields': {'Id': {'event_1000': 1221, 'event_16394': 54231}}, 'stats_path': 'stats/win_evtx_app.parquet', 'filter_port': 12223}"}
+{"asctime": "2025-07-04 16:58:21,173", "levelname": "WARNING", "name": "managers.initiative_manager", "message": "54231"}
+{"asctime": "2025-07-04 16:58:21,175", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config filter-win_evtx_app.toml"}
+{"asctime": "2025-07-04 16:58:21,176", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config sink.toml"}
+{"asctime": "2025-07-04 16:58:21,177", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Vector hot-reload requested (noop)"}
+{"asctime": "2025-07-04 16:58:36,777", "levelname": "INFO", "name": "__main__", "message": "Starting vpipeline..."}
+{"asctime": "2025-07-04 16:58:36,778", "levelname": "INFO", "name": "managers.pipeline_manager", "message": "Sync pipeline"}
+{"asctime": "2025-07-04 16:58:36,779", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config frontend.toml"}
+{"asctime": "2025-07-04 16:58:36,780", "levelname": "WARNING", "name": "managers.initiative_manager", "message": "key_fields.Id.event_16394 < '0', {'id': 'win_evtx_app', 'name': 'Windows EVTX Application', 'type': 'windows_evtx', 'fields': ['Id', 'Level', 'Channel', 'Message', 'Hostname', 'TimeCreated'], 'key_fields': {'Id': {'event_1000': 1221, 'event_16394': 54231}}, 'stats_path': 'stats/win_evtx_app.parquet', 'filter_port': 12223}"}
+{"asctime": "2025-07-04 16:58:36,780", "levelname": "WARNING", "name": "managers.initiative_manager", "message": "Bad relevancy rule in win_app_remove_16394: '<' not supported between instances of 'int' and 'str'"}
+{"asctime": "2025-07-04 16:58:36,781", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config filter-win_evtx_app.toml"}
+{"asctime": "2025-07-04 16:58:36,782", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config sink.toml"}
+{"asctime": "2025-07-04 16:58:36,783", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Vector hot-reload requested (noop)"}
+{"asctime": "2025-07-04 16:58:49,992", "levelname": "INFO", "name": "__main__", "message": "Starting vpipeline..."}
+{"asctime": "2025-07-04 16:58:49,993", "levelname": "INFO", "name": "managers.pipeline_manager", "message": "Sync pipeline"}
+{"asctime": "2025-07-04 16:58:49,995", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config frontend.toml"}
+{"asctime": "2025-07-04 16:58:49,995", "levelname": "WARNING", "name": "managers.initiative_manager", "message": "key_fields.Id.event_16394 < 0, {'id': 'win_evtx_app', 'name': 'Windows EVTX Application', 'type': 'windows_evtx', 'fields': ['Id', 'Level', 'Channel', 'Message', 'Hostname', 'TimeCreated'], 'key_fields': {'Id': {'event_1000': 1221, 'event_16394': 54231}}, 'stats_path': 'stats/win_evtx_app.parquet', 'filter_port': 12223}"}
+{"asctime": "2025-07-04 16:58:49,996", "levelname": "WARNING", "name": "managers.initiative_manager", "message": "Bad relevancy rule in win_app_remove_16394: invalid token: Parse error at column 28, token \"0\" (NUMBER), for expression:\n\"key_fields.Id.event_16394 < 0\"\n                             ^"}
+{"asctime": "2025-07-04 16:58:49,997", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config filter-win_evtx_app.toml"}
+{"asctime": "2025-07-04 16:58:49,998", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config sink.toml"}
+{"asctime": "2025-07-04 16:58:49,998", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Vector hot-reload requested (noop)"}
+{"asctime": "2025-07-04 17:00:00,306", "levelname": "INFO", "name": "__main__", "message": "Starting vpipeline..."}
+{"asctime": "2025-07-04 17:00:00,307", "levelname": "INFO", "name": "managers.pipeline_manager", "message": "Sync pipeline"}
+{"asctime": "2025-07-04 17:00:00,308", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config frontend.toml"}
+{"asctime": "2025-07-04 17:00:00,309", "levelname": "WARNING", "name": "managers.initiative_manager", "message": "key_fields.Id.event_16394 < `0`, {'id': 'win_evtx_app', 'name': 'Windows EVTX Application', 'type': 'windows_evtx', 'fields': ['Id', 'Level', 'Channel', 'Message', 'Hostname', 'TimeCreated'], 'key_fields': {'Id': {'event_1000': 1221, 'event_16394': 54231}}, 'stats_path': 'stats/win_evtx_app.parquet', 'filter_port': 12223}"}
+{"asctime": "2025-07-04 17:00:00,309", "levelname": "WARNING", "name": "managers.initiative_manager", "message": "False"}
+{"asctime": "2025-07-04 17:00:00,311", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config filter-win_evtx_app.toml"}
+{"asctime": "2025-07-04 17:00:00,312", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config sink.toml"}
+{"asctime": "2025-07-04 17:00:00,313", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Vector hot-reload requested (noop)"}
+{"asctime": "2025-07-04 17:00:17,369", "levelname": "INFO", "name": "__main__", "message": "Starting vpipeline..."}
+{"asctime": "2025-07-04 17:00:17,370", "levelname": "INFO", "name": "managers.pipeline_manager", "message": "Sync pipeline"}
+{"asctime": "2025-07-04 17:00:17,372", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config frontend.toml"}
+{"asctime": "2025-07-04 17:00:17,372", "levelname": "WARNING", "name": "managers.initiative_manager", "message": "key_fields.Id.event_16394 > `0`, {'id': 'win_evtx_app', 'name': 'Windows EVTX Application', 'type': 'windows_evtx', 'fields': ['Id', 'Level', 'Channel', 'Message', 'Hostname', 'TimeCreated'], 'key_fields': {'Id': {'event_1000': 1221, 'event_16394': 54231}}, 'stats_path': 'stats/win_evtx_app.parquet', 'filter_port': 12223}"}
+{"asctime": "2025-07-04 17:00:17,373", "levelname": "WARNING", "name": "managers.initiative_manager", "message": "True"}
+{"asctime": "2025-07-04 17:00:17,374", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config filter-win_evtx_app.toml"}
+{"asctime": "2025-07-04 17:00:17,376", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config sink.toml"}
+{"asctime": "2025-07-04 17:00:17,376", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Vector hot-reload requested (noop)"}
+{"asctime": "2025-07-04 17:00:27,278", "levelname": "WARNING", "name": "managers.initiative_manager", "message": "key_fields.Id.event_16394 > `0`, {'id': 'win_evtx_app', 'name': 'Windows EVTX Application', 'type': 'windows_evtx', 'fields': ['Id', 'Level', 'Channel', 'Message', 'Hostname', 'TimeCreated'], 'key_fields': {'Id': {'event_1000': 1221, 'event_16394': 54231}}, 'stats_path': 'stats/win_evtx_app.parquet', 'filter_port': 12223}"}
+{"asctime": "2025-07-04 17:00:27,279", "levelname": "WARNING", "name": "managers.initiative_manager", "message": "True"}
+{"asctime": "2025-07-04 17:00:52,675", "levelname": "WARNING", "name": "managers.initiative_manager", "message": "key_fields.Id.event_16394 > `0`, {'id': 'win_evtx_app', 'name': 'Windows EVTX Application', 'type': 'windows_evtx', 'fields': ['Id', 'Level', 'Channel', 'Message', 'Hostname', 'TimeCreated'], 'key_fields': {'Id': {'event_1000': 1221, 'event_16394': 54231}}, 'stats_path': 'stats/win_evtx_app.parquet', 'filter_port': 12223}"}
+{"asctime": "2025-07-04 17:00:52,675", "levelname": "WARNING", "name": "managers.initiative_manager", "message": "True"}
+{"asctime": "2025-07-04 17:00:52,677", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config filter-win_evtx_app.toml"}
+{"asctime": "2025-07-04 17:00:52,678", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Vector hot-reload requested (noop)"}
+{"asctime": "2025-07-04 17:26:32,582", "levelname": "INFO", "name": "__main__", "message": "Starting vpipeline..."}
+{"asctime": "2025-07-04 17:26:32,584", "levelname": "INFO", "name": "managers.pipeline_manager", "message": "Sync pipeline"}
+{"asctime": "2025-07-04 17:26:32,585", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config frontend.toml"}
+{"asctime": "2025-07-04 17:26:32,586", "levelname": "WARNING", "name": "managers.initiative_manager", "message": "key_fields.Id.event_16394 > `0`, {'id': 'win_evtx_app', 'name': 'Windows EVTX Application', 'type': 'windows_evtx', 'fields': ['Id', 'Level', 'Channel', 'Message', 'Hostname', 'TimeCreated'], 'key_fields': {'Id': {'event_1000': 1221, 'event_16394': 54231}}, 'frontend_port': 12222}"}
+{"asctime": "2025-07-04 17:26:32,586", "levelname": "WARNING", "name": "managers.initiative_manager", "message": "True"}
+{"asctime": "2025-07-04 17:26:32,588", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config filter-win_evtx_app.toml"}
+{"asctime": "2025-07-04 17:26:32,588", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config sink.toml"}
+{"asctime": "2025-07-04 17:26:32,589", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Vector hot-reload requested (noop)"}
+{"asctime": "2025-07-04 17:29:42,988", "levelname": "INFO", "name": "__main__", "message": "Starting vpipeline..."}
+{"asctime": "2025-07-04 17:29:42,989", "levelname": "INFO", "name": "managers.pipeline_manager", "message": "Sync pipeline"}
+{"asctime": "2025-07-04 17:29:42,990", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config frontend.toml"}
+{"asctime": "2025-07-04 17:29:42,991", "levelname": "WARNING", "name": "managers.initiative_manager", "message": "key_fields.Id.event_16394 > `0`, {'id': 'win_evtx_app', 'name': 'Windows EVTX Application', 'type': 'windows_evtx', 'fields': ['Id', 'Level', 'Channel', 'Message', 'Hostname', 'TimeCreated'], 'key_fields': {'Id': {'event_1000': 1221, 'event_16394': 54231}}, 'frontend_port': 12222}"}
+{"asctime": "2025-07-04 17:29:42,991", "levelname": "WARNING", "name": "managers.initiative_manager", "message": "True"}
+{"asctime": "2025-07-04 17:29:42,992", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config filter-win_evtx_app.toml"}
+{"asctime": "2025-07-04 17:29:42,993", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config sink.toml"}
+{"asctime": "2025-07-04 17:29:42,993", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Vector hot-reload requested (noop)"}
+{"asctime": "2025-07-04 17:31:39,372", "levelname": "INFO", "name": "__main__", "message": "Starting vpipeline..."}
+{"asctime": "2025-07-04 17:31:39,373", "levelname": "INFO", "name": "managers.pipeline_manager", "message": "Sync pipeline"}
+{"asctime": "2025-07-04 17:31:39,375", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config frontend.toml"}
+{"asctime": "2025-07-04 17:31:39,376", "levelname": "WARNING", "name": "managers.initiative_manager", "message": "key_fields.Id.event_16394 > `0`, {'id': 'win_evtx_app', 'name': 'Windows EVTX Application', 'type': 'windows_evtx', 'fields': ['Id', 'Level', 'Channel', 'Message', 'Hostname', 'TimeCreated'], 'key_fields': {'Id': {'event_1000': 1221, 'event_16394': 54231}}, 'frontend_port': 12222}"}
+{"asctime": "2025-07-04 17:31:39,376", "levelname": "WARNING", "name": "managers.initiative_manager", "message": "True"}
+{"asctime": "2025-07-04 17:31:39,377", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config filter-win_evtx_app.toml"}
+{"asctime": "2025-07-04 17:31:39,378", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config sink.toml"}
+{"asctime": "2025-07-04 17:31:39,378", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Vector hot-reload requested (noop)"}
+{"asctime": "2025-07-04 17:32:18,476", "levelname": "INFO", "name": "__main__", "message": "Starting vpipeline..."}
+{"asctime": "2025-07-04 17:32:18,476", "levelname": "INFO", "name": "managers.pipeline_manager", "message": "Sync pipeline"}
+{"asctime": "2025-07-04 17:32:18,478", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config frontend.toml"}
+{"asctime": "2025-07-04 17:32:18,478", "levelname": "WARNING", "name": "managers.initiative_manager", "message": "key_fields.Id.event_16394 > `0`, {'id': 'win_evtx_app', 'name': 'Windows EVTX Application', 'type': 'windows_evtx', 'fields': ['Id', 'Level', 'Channel', 'Message', 'Hostname', 'TimeCreated'], 'key_fields': {'Id': {'event_1000': 1221, 'event_16394': 54231}}, 'frontend_port': 12222}"}
+{"asctime": "2025-07-04 17:32:18,479", "levelname": "WARNING", "name": "managers.initiative_manager", "message": "True"}
+{"asctime": "2025-07-04 17:32:18,480", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config filter-win_evtx_app.toml"}
+{"asctime": "2025-07-04 17:32:18,481", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config sink.toml"}
+{"asctime": "2025-07-04 17:32:18,481", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Vector hot-reload requested (noop)"}
+{"asctime": "2025-07-04 17:33:04,621", "levelname": "INFO", "name": "__main__", "message": "Starting vpipeline..."}
+{"asctime": "2025-07-04 17:33:04,622", "levelname": "INFO", "name": "managers.pipeline_manager", "message": "Sync pipeline"}
+{"asctime": "2025-07-04 17:33:04,624", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config frontend.toml"}
+{"asctime": "2025-07-04 17:33:04,624", "levelname": "WARNING", "name": "managers.initiative_manager", "message": "key_fields.Id.event_16394 > `0`, {'id': 'win_evtx_app', 'name': 'Windows EVTX Application', 'type': 'windows_evtx', 'fields': ['Id', 'Level', 'Channel', 'Message', 'Hostname', 'TimeCreated'], 'key_fields': {'Id': {'event_1000': 1221, 'event_16394': 54231}}, 'frontend_port': 12222}"}
+{"asctime": "2025-07-04 17:33:04,624", "levelname": "WARNING", "name": "managers.initiative_manager", "message": "True"}
+{"asctime": "2025-07-04 17:33:04,625", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config filter-win-evtx-app.toml"}
+{"asctime": "2025-07-04 17:33:04,627", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config sink.toml"}
+{"asctime": "2025-07-04 17:33:04,627", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Vector hot-reload requested (noop)"}
+{"asctime": "2025-07-04 17:39:15,426", "levelname": "INFO", "name": "__main__", "message": "Starting vpipeline..."}
+{"asctime": "2025-07-04 17:39:15,427", "levelname": "INFO", "name": "managers.pipeline_manager", "message": "Sync pipeline"}
+{"asctime": "2025-07-04 17:39:15,429", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config frontend.toml"}
+{"asctime": "2025-07-04 17:39:15,429", "levelname": "WARNING", "name": "managers.initiative_manager", "message": "key_fields.Id.event_16394 > `0`, {'id': 'win_evtx_app', 'name': 'Windows EVTX Application', 'type': 'windows_evtx', 'fields': ['Id', 'Level', 'Channel', 'Message', 'Hostname', 'TimeCreated'], 'key_fields': {'Id': {'event_1000': 1221, 'event_16394': 54231}}, 'frontend_port': 12222}"}
+{"asctime": "2025-07-04 17:39:15,429", "levelname": "WARNING", "name": "managers.initiative_manager", "message": "True"}
+{"asctime": "2025-07-04 17:39:15,430", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config filter-win-evtx-app.toml"}
+{"asctime": "2025-07-04 17:39:57,166", "levelname": "INFO", "name": "__main__", "message": "Starting vpipeline..."}
+{"asctime": "2025-07-04 17:39:57,167", "levelname": "INFO", "name": "managers.pipeline_manager", "message": "Sync pipeline"}
+{"asctime": "2025-07-04 17:39:57,169", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config frontend.toml"}
+{"asctime": "2025-07-04 17:39:57,169", "levelname": "WARNING", "name": "managers.initiative_manager", "message": "key_fields.Id.event_16394 > `0`, {'id': 'win_evtx_app', 'name': 'Windows EVTX Application', 'type': 'windows_evtx', 'fields': ['Id', 'Level', 'Channel', 'Message', 'Hostname', 'TimeCreated'], 'key_fields': {'Id': {'event_1000': 1221, 'event_16394': 54231}}, 'frontend_port': 12222}"}
+{"asctime": "2025-07-04 17:39:57,170", "levelname": "WARNING", "name": "managers.initiative_manager", "message": "True"}
+{"asctime": "2025-07-04 17:39:57,172", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config filter-win-evtx-app.toml"}
+{"asctime": "2025-07-04 17:39:57,175", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config sink.toml"}
+{"asctime": "2025-07-04 17:39:57,175", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Vector hot-reload requested (noop)"}
+{"asctime": "2025-07-04 17:41:21,706", "levelname": "INFO", "name": "__main__", "message": "Starting vpipeline..."}
+{"asctime": "2025-07-04 17:41:21,707", "levelname": "INFO", "name": "managers.pipeline_manager", "message": "Sync pipeline"}
+{"asctime": "2025-07-04 17:41:21,708", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config frontend.toml"}
+{"asctime": "2025-07-04 17:41:21,709", "levelname": "WARNING", "name": "managers.initiative_manager", "message": "key_fields.Id.event_16394 > `0`, {'id': 'win_evtx_app', 'name': 'Windows EVTX Application', 'type': 'windows_evtx', 'fields': ['Id', 'Level', 'Channel', 'Message', 'Hostname', 'TimeCreated'], 'key_fields': {'Id': {'event_1000': 1221, 'event_16394': 54231}}, 'frontend_port': 12222}"}
+{"asctime": "2025-07-04 17:41:21,709", "levelname": "WARNING", "name": "managers.initiative_manager", "message": "True"}
+{"asctime": "2025-07-04 17:41:21,711", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config filter-win-evtx-app.toml"}
+{"asctime": "2025-07-04 17:45:12,741", "levelname": "INFO", "name": "__main__", "message": "Starting vpipeline..."}
+{"asctime": "2025-07-04 17:45:12,742", "levelname": "INFO", "name": "managers.pipeline_manager", "message": "Sync pipeline"}
+{"asctime": "2025-07-04 17:45:12,744", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config frontend.toml"}
+{"asctime": "2025-07-04 17:45:12,744", "levelname": "WARNING", "name": "managers.initiative_manager", "message": "key_fields.Id.event_16394 > `0`, {'id': 'win_evtx_app', 'name': 'Windows EVTX Application', 'type': 'windows_evtx', 'fields': ['Id', 'Level', 'Channel', 'Message', 'Hostname', 'TimeCreated'], 'key_fields': {'Id': {'event_1000': 1221, 'event_16394': 54231}}, 'frontend_port': 12222}"}
+{"asctime": "2025-07-04 17:45:12,744", "levelname": "WARNING", "name": "managers.initiative_manager", "message": "True"}
+{"asctime": "2025-07-04 17:45:12,746", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config filter-win-evtx-app.toml"}
+{"asctime": "2025-07-04 17:45:47,255", "levelname": "INFO", "name": "__main__", "message": "Starting vpipeline..."}
+{"asctime": "2025-07-04 17:45:47,257", "levelname": "INFO", "name": "managers.pipeline_manager", "message": "Sync pipeline"}
+{"asctime": "2025-07-04 17:45:47,258", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config frontend.toml"}
+{"asctime": "2025-07-04 17:45:47,258", "levelname": "WARNING", "name": "managers.initiative_manager", "message": "key_fields.Id.event_16394 > `0`, {'id': 'win_evtx_app', 'name': 'Windows EVTX Application', 'type': 'windows_evtx', 'fields': ['Id', 'Level', 'Channel', 'Message', 'Hostname', 'TimeCreated'], 'key_fields': {'Id': {'event_1000': 1221, 'event_16394': 54231}}, 'frontend_port': 12222}"}
+{"asctime": "2025-07-04 17:45:47,259", "levelname": "WARNING", "name": "managers.initiative_manager", "message": "True"}
+{"asctime": "2025-07-04 17:45:47,260", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config filter-win-evtx-app.toml"}
+{"asctime": "2025-07-04 17:45:47,263", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Wrote config sink.toml"}
+{"asctime": "2025-07-04 17:45:47,263", "levelname": "INFO", "name": "managers.vector_config_manager", "message": "Vector hot-reload requested (noop)"}
