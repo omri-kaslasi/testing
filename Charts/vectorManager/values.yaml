@@ -7,8 +7,8 @@ global:
   vectorS3Backup: arn:aws:s3:::dev1-vector-sink-backup
   kafkaClusterName: kafka
 
-sourceAlphaVector:
-  role: &role alpha-vector
+vectorManager:
+  role: &role vector-manager
 
   resources:
     limits:
@@ -18,24 +18,11 @@ sourceAlphaVector:
       memory: 2048Mi
 
   autoscaling:
-    enabled: true
-    minReplicas: 1
-    maxReplicas: 3
-    cooldownPeriod: 30
-    triggers:
-      cpuUtilizationPercentage: 60
+    enabled: false
 
-  # image:
-  #   repository: timberio/vector
-  #   version: 0.47.0-debian
-  
-  # This block is for when you want to start the pod without image to debug efs
-  command: 
-    - "sleep"
-    - "600"
   image:
-    repository: busybox
-    version: 1.37.0
+    repository: timberio/vector
+    version: 0.47.0-debian
 
   persistentVolume:
     name: "vector-efs"
@@ -68,12 +55,6 @@ sourceAlphaVector:
         ports:
           - protocol: TCP
             port: 53 # DNS Resolver
-  
-  kafka:
-    inputQueue:
-      name: frontend_to_alpha_source
-    outputQueue:
-      name: alpha_source_to_analyzer
 
   environmentVariables:
     VECTOR_CONFIG: /vector/source1.yaml

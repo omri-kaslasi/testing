@@ -1,0 +1,5 @@
+{{- include "common.storageClass" (list . .Values.vectorManager.persistentVolume) }}
+---
+{{- include "common.persistentVolume" (list . .Values.vectorManager.persistentVolume) }}
+---
+{{- include "common.persistentVolumeClaim" (list . .Values.vectorManager.persistentVolume) }}

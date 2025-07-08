@@ -1,2 +1,1 @@
-{{- $deployment := .Values.sourceAlphaVector }}
-{{- include "common.deployment" (list . $deployment) }}
+{{- include "common.deployment" (list . .Values.sourceAlphaVector) }}

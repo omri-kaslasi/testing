@@ -1,5 +1,6 @@
-{{- include "common.storageClass" (list . .Values.sourceAlphaVector.persistentVolume) }}
----
-{{- include "common.persistentVolume" (list . .Values.sourceAlphaVector.persistentVolume) }}
----
-{{- include "common.persistentVolumeClaim" (list . .Values.sourceAlphaVector.persistentVolume) }}
+# Should be created by vector manager
+# {{- include "common.storageClass" (list . .Values.sourceAlphaVector.persistentVolume) }}
+# ---
+# {{- include "common.persistentVolume" (list . .Values.sourceAlphaVector.persistentVolume) }}
+# ---
+# {{- include "common.persistentVolumeClaim" (list . .Values.sourceAlphaVector.persistentVolume) }}
