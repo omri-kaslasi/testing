@@ -71,9 +71,9 @@ sourceAlphaVector:
   
   kafka:
     inputQueue:
-      name: frontend_to_alpha_source
+      name: frontend-to-alpha-source
     outputQueue:
-      name: alpha_source_to_analyzer
+      name: alpha-source-to-analyzer
 
   environmentVariables:
     VECTOR_CONFIG: /vector/source1.yaml
