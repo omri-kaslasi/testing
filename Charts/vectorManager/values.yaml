@@ -14,15 +14,15 @@ vectorManager:
     limits:
       memory: 2048Mi
     requests:
-      cpu: 1000m
-      memory: 2048Mi
+      cpu: 200m
+      memory: 512Mi
 
   autoscaling:
     enabled: false
 
   image:
-    repository: timberio/vector
-    version: 0.47.0-debian
+    repository: omrikas/vectorwip
+    version: 0.0.1
 
   persistentVolume:
     name: "vector-efs"

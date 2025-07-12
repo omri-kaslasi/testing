@@ -1,11 +1,15 @@
 apiVersion: karpenter.k8s.aws/v1
+kind: EC2NodeClass
 metadata:
   name: default
-kind: EC2NodeClass
 spec:
   amiFamily: AL2
+
+
   amiSelectorTerms:
-  - id: ami-047f461ebd483c99e
+  - name: "amazon-eks-arm64-node*"
+    owner: amazon
+
   blockDeviceMappings:
   - deviceName: /dev/xvda
     ebs:

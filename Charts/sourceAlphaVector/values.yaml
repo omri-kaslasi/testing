@@ -14,8 +14,8 @@ sourceAlphaVector:
     limits:
       memory: 2048Mi
     requests:
-      cpu: 1000m
-      memory: 2048Mi
+      cpu: 200m
+      memory: 512Mi
 
   autoscaling:
     enabled: true
